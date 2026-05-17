@@ -1,69 +1,36 @@
-# SonicWave - Music Streaming Platform
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A modern full-stack music streaming platform built with Next.js, Express, and MongoDB.
+## Getting Started
 
-## 🚀 Quick Start
+First, run the development server:
 
-### Prerequisites
-- Node.js 18+
-- MongoDB running locally (or MongoDB Atlas)
-
-### Frontend (Client)
 ```bash
-cd client
-npm install
 npm run dev
-# Open http://localhost:3000
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-### Backend (Server)
-```bash
-cd server
-npm install
-# Copy .env.example to .env and configure
-cp .env.example .env
-npm run dev
-# API running on http://localhost:5000
-```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Seed Sample Data
-```bash
-cd server
-npm run seed
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## 🔑 Demo Accounts (after seeding)
-| Role   | Email                 | Password     |
-|--------|-----------------------|--------------|
-| Admin  | admin@sonicwave.com   | password123  |
-| Artist | synth@sonicwave.com   | password123  |
-| User   | user@sonicwave.com    | password123  |
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 📁 Project Structure
-```
-music/
-├── client/          # Next.js Frontend
-│   └── src/
-│       ├── app/         # Pages (App Router)
-│       ├── components/  # Reusable UI
-│       ├── context/     # Auth & Audio providers
-│       ├── lib/         # API client & demo data
-│       └── types/       # TypeScript interfaces
-├── server/          # Express Backend
-│   ├── config/      # Database config
-│   ├── middleware/   # Auth, upload middleware
-│   ├── models/      # Mongoose schemas
-│   ├── routes/      # API endpoints
-│   └── seed/        # Sample data seeder
-└── README.md
-```
+## Learn More
 
-## 🎵 Features
-- Streaming with Howler.js audio engine
-- JWT authentication with role-based access
-- Instant search with genre filtering
-- Animated UI with Framer Motion
-- Responsive mobile-first design
+To learn more about Next.js, take a look at the following resources:
 
-## ⚖️ Legal
-All demo audio is royalty-free from Pixabay. All images via Unsplash.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
