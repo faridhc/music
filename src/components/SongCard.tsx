@@ -43,18 +43,18 @@ export default function SongCard({ song, queue, index }: { song: Song; queue?: S
         )}
       </div>
       {/* Info */}
-      <div className="p-3 bg-white flex items-start justify-between gap-2">
+      <div className="p-3 bg-[var(--color-surface)] dark:bg-slate-800/90 flex items-start justify-between gap-2 transition-colors duration-300">
         <div className="flex-1 min-w-0" onClick={() => playSong(song, queue)}>
-          <p className="text-sm font-semibold text-slate-800 truncate">{song.title}</p>
-          <p className="text-xs text-slate-500 truncate mt-0.5">{song.artistName}</p>
+          <p className="text-sm font-semibold text-[var(--color-text-main)] truncate">{song.title}</p>
+          <p className="text-xs text-[var(--color-text-muted)] truncate mt-0.5">{song.artistName}</p>
           <div className="flex items-center justify-between mt-2">
-            <span className="text-xs text-slate-400">{Math.floor(song.duration / 60)}:{(song.duration % 60).toString().padStart(2, '0')}</span>
-            <span className="text-xs text-slate-400">{song.plays?.toLocaleString()} plays</span>
+            <span className="text-xs text-slate-400 dark:text-slate-500">{Math.floor(song.duration / 60)}:{(song.duration % 60).toString().padStart(2, '0')}</span>
+            <span className="text-xs text-slate-400 dark:text-slate-500">{song.plays?.toLocaleString()} plays</span>
           </div>
         </div>
         <button 
           onClick={(e) => { e.stopPropagation(); toggleLike(song); }}
-          className={`p-1.5 rounded-full transition-all ${liked ? 'text-rose-500' : 'text-slate-300 hover:text-rose-500'}`}
+          className={`p-1.5 rounded-full transition-all ${liked ? 'text-rose-500' : 'text-slate-350 dark:text-slate-500 hover:text-rose-500'}`}
         >
           <HiHeart className="text-lg" />
         </button>

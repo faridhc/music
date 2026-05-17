@@ -120,31 +120,31 @@ export default function SearchPage() {
         <motion.button 
           initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
           onClick={() => setSelectedAuthor(null)}
-          className="flex items-center gap-2 text-slate-500 hover:text-indigo-600 font-semibold mb-6 transition-colors"
+          className="flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 font-semibold mb-6 transition-colors"
         >
           <HiArrowLeft /> Back to Search
         </motion.button>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-6 mb-10 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-          <div className="w-32 h-32 rounded-full overflow-hidden bg-slate-100 ring-4 ring-indigo-50 shadow-md flex-shrink-0 flex items-center justify-center">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-6 mb-10 bg-[var(--color-surface)] dark:bg-slate-800/80 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm transition-colors duration-300">
+          <div className="w-32 h-32 rounded-full overflow-hidden bg-slate-100 dark:bg-slate-700 ring-4 ring-indigo-50 dark:ring-slate-800 shadow-md flex-shrink-0 flex items-center justify-center">
             {selectedAuthor.profile_picture ? (
               <img src={selectedAuthor.profile_picture?.["480x480"] || selectedAuthor.profile_picture?.["150x150"]} alt={selectedAuthor.name} className="w-full h-full object-cover" />
             ) : (
-              <HiUser className="text-5xl text-slate-300" />
+              <HiUser className="text-5xl text-slate-350 dark:text-slate-500" />
             )}
           </div>
           <div>
-            <h1 className="text-4xl font-bold text-slate-800">{selectedAuthor.name}</h1>
-            <p className="text-slate-500 mt-1">{selectedAuthor.follower_count?.toLocaleString()} followers</p>
+            <h1 className="text-4xl font-bold text-[var(--color-text-main)]">{selectedAuthor.name}</h1>
+            <p className="text-[var(--color-text-muted)] mt-1">{selectedAuthor.follower_count?.toLocaleString()} followers</p>
           </div>
         </motion.div>
 
-        <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-          <HiMusicalNote className="text-indigo-500" /> Top Tracks by {selectedAuthor.name}
+        <h2 className="text-xl font-bold text-[var(--color-text-main)] mb-4 flex items-center gap-2">
+          <HiMusicalNote className="text-indigo-550 dark:text-indigo-400" /> Top Tracks by {selectedAuthor.name}
         </h2>
         
         {loadingAuthor ? (
-          <div className="py-20 flex justify-center"><div className="w-10 h-10 border-4 border-indigo-200 border-t-indigo-500 rounded-full animate-spin" /></div>
+          <div className="py-20 flex justify-center"><div className="w-10 h-10 border-4 border-indigo-200 dark:border-slate-800 border-t-indigo-550 rounded-full animate-spin" /></div>
         ) : authorTracks.length > 0 ? (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {authorTracks.map((song, i) => (
@@ -154,7 +154,7 @@ export default function SearchPage() {
             ))}
           </motion.div>
         ) : (
-          <div className="text-center py-20 bg-white rounded-2xl border border-slate-100"><p className="text-slate-500">No tracks found for this artist.</p></div>
+          <div className="text-center py-20 bg-[var(--color-surface)] dark:bg-slate-800/80 rounded-2xl border border-slate-100 dark:border-slate-800"><p className="text-[var(--color-text-muted)]">No tracks found for this artist.</p></div>
         )}
       </div>
     );
@@ -164,7 +164,7 @@ export default function SearchPage() {
     <div className="p-6 md:p-8 max-w-7xl mx-auto">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-          <h1 className="text-3xl font-bold text-slate-800">Global Search</h1>
+          <h1 className="text-3xl font-bold text-[var(--color-text-main)]">Global Search</h1>
         </div>
 
         {/* Search Bar */}
@@ -172,22 +172,22 @@ export default function SearchPage() {
           <HiMagnifyingGlass className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl" />
           <input
             type="text" value={query} onChange={e => setQuery(e.target.value)}
-            placeholder="Search official music & artists globally..."
-            className="w-full pl-12 pr-10 py-3.5 rounded-2xl bg-white border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-transparent shadow-sm text-sm font-medium"
+            placeholder="Search music, albums & artists globally..."
+            className="w-full pl-12 pr-10 py-3.5 rounded-2xl bg-[var(--color-surface)] dark:bg-slate-800/85 border border-slate-200 dark:border-slate-700 text-[var(--color-text-main)] placeholder-slate-450 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-300 dark:focus:ring-indigo-500/35 focus:border-transparent shadow-sm text-sm font-medium transition-all duration-300"
           />
           {query && (
-            <button onClick={() => setQuery("")} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+            <button onClick={() => setQuery("")} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-655 dark:hover:text-slate-300">
               <HiXMark className="text-lg" />
             </button>
           )}
         </div>
 
         {/* Category Tabs */}
-        <div className="flex gap-2 mb-8 border-b border-slate-100 pb-4">
+        <div className="flex gap-2 mb-8 border-b border-slate-100 dark:border-slate-800 pb-4">
           <button
             onClick={() => setActiveTab("songs")}
             className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all flex items-center gap-2 ${
-              activeTab === "songs" ? "bg-indigo-500 text-white shadow-md shadow-indigo-100" : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-200/80"
+              activeTab === "songs" ? "bg-indigo-500 text-white shadow-md shadow-indigo-100" : "bg-[var(--color-surface)] dark:bg-slate-800 text-[var(--color-text-muted)] hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700/50"
             }`}
           >
             <HiMusicalNote className="text-lg" /> Songs
@@ -195,7 +195,7 @@ export default function SearchPage() {
           <button
             onClick={() => setActiveTab("authors")}
             className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all flex items-center gap-2 ${
-              activeTab === "authors" ? "bg-indigo-500 text-white shadow-md shadow-indigo-100" : "bg-white text-slate-600 hover:bg-slate-50 border border-slate-200/80"
+              activeTab === "authors" ? "bg-indigo-500 text-white shadow-md shadow-indigo-100" : "bg-[var(--color-surface)] dark:bg-slate-800 text-[var(--color-text-muted)] hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700/50"
             }`}
           >
             <HiUser className="text-lg" /> Artists
@@ -206,7 +206,7 @@ export default function SearchPage() {
       <AnimatePresence mode="wait">
         {loading ? (
           <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="py-20 flex justify-center">
-            <div className="w-10 h-10 border-4 border-indigo-200 border-t-indigo-500 rounded-full animate-spin" />
+            <div className="w-10 h-10 border-4 border-indigo-200 dark:border-slate-800 border-t-indigo-500 rounded-full animate-spin" />
           </motion.div>
         ) : activeTab === "authors" && authorResults.length > 0 ? (
           <motion.div key="authors" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -216,17 +216,17 @@ export default function SearchPage() {
                 key={author.id} 
                 onClick={() => setSelectedAuthor(author)}
                 initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.04 }}
-                className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm text-center hover:shadow-md transition-all cursor-pointer group"
+                className="bg-[var(--color-surface)] dark:bg-slate-800/90 p-5 rounded-2xl border border-slate-100 dark:border-slate-700/60 shadow-sm text-center hover:shadow-md transition-all duration-300 cursor-pointer group"
               >
-                <div className="w-24 h-24 rounded-full overflow-hidden bg-gradient-to-tr from-indigo-100 to-violet-200 mx-auto mb-3 ring-4 ring-slate-50 group-hover:ring-indigo-50 transition-all flex items-center justify-center shadow-inner">
+                <div className="w-24 h-24 rounded-full overflow-hidden bg-gradient-to-tr from-indigo-100 to-violet-200 mx-auto mb-3 ring-4 ring-slate-50 dark:ring-slate-700 group-hover:ring-indigo-50 dark:group-hover:ring-indigo-400/50 transition-all flex items-center justify-center shadow-inner">
                   {author.profile_picture ? (
                     <img src={author.profile_picture?.["150x150"] || author.profile_picture?.["480x480"]} alt={author.name} className="w-full h-full object-cover" />
                   ) : (
                     <HiUser className="text-4xl text-indigo-400" />
                   )}
                 </div>
-                <p className="font-bold text-slate-800 text-sm truncate">{author.name}</p>
-                <p className="text-xs text-slate-400 mt-0.5">{author.follower_count?.toLocaleString() || 0} followers</p>
+                <p className="font-bold text-[var(--color-text-main)] text-sm truncate">{author.name}</p>
+                <p className="text-xs text-[var(--color-text-muted)] mt-0.5">{author.follower_count?.toLocaleString() || 0} followers</p>
               </motion.div>
             ))}
           </motion.div>
@@ -240,15 +240,15 @@ export default function SearchPage() {
             ))}
           </motion.div>
         ) : query ? (
-          <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20 bg-white rounded-3xl border border-slate-100 shadow-sm max-w-md mx-auto p-8">
-            <HiMagnifyingGlass className="text-5xl text-slate-300 mx-auto mb-4" />
-            <p className="text-slate-700 font-bold text-lg">No {activeTab} found</p>
+          <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20 bg-[var(--color-surface)] dark:bg-slate-800/80 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm max-w-md mx-auto p-8 transition-colors duration-300">
+            <HiMagnifyingGlass className="text-5xl text-slate-350 dark:text-slate-500 mx-auto mb-4" />
+            <p className="text-[var(--color-text-main)] font-bold text-lg">No {activeTab} found</p>
           </motion.div>
         ) : (
-          <motion.div key="start" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20 bg-white rounded-3xl border border-slate-100 shadow-sm max-w-xl mx-auto p-10">
-            <HiMagnifyingGlass className="text-6xl text-indigo-400 mx-auto mb-4 animate-pulse" />
-            <h3 className="text-slate-800 font-bold text-xl">Search Global Music</h3>
-            <p className="text-slate-500 text-sm mt-2 max-w-md mx-auto">
+          <motion.div key="start" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20 bg-[var(--color-surface)] dark:bg-slate-800/80 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm max-w-xl mx-auto p-10 transition-colors duration-300">
+            <HiMagnifyingGlass className="text-6xl text-indigo-400 dark:text-indigo-400/80 mx-auto mb-4 animate-pulse" />
+            <h3 className="text-[var(--color-text-main)] font-bold text-xl">Search Global Music</h3>
+            <p className="text-[var(--color-text-muted)] text-sm mt-2 max-w-md mx-auto">
               Search for official top artists and tracks.
             </p>
           </motion.div>
